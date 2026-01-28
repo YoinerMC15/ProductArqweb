@@ -1,0 +1,14 @@
+# .NET build
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# SQLite databases
+*.db
+
+# Logs
+*.log

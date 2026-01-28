@@ -1,0 +1,40 @@
+syntax = "proto3";
+option csharp_namespace = "ProductgRPC";
+
+package productos;
+
+message Empty {}
+
+message IdRequest { int32 id = 1; }
+
+message ProductoDto {
+  int32 id = 1;
+  string nombre = 2;
+  string descripcion = 3;
+  double precio = 4;
+}
+
+message CrearRequest {
+  string nombre = 1;
+  string descripcion = 2;
+  double precio = 3;
+}
+
+message ActualizarRequest {
+  int32 id = 1;
+  string nombre = 2;
+  string descripcion = 3;
+  double precio = 4;
+}
+
+message ListResponse {
+  repeated ProductoDto items = 1;
+}
+
+service ProductosService {
+  rpc Listar (Empty) returns (ListResponse);
+  rpc Obtener (IdRequest) returns (ProductoDto);
+  rpc Crear (CrearRequest) returns (ProductoDto);
+  rpc Actualizar (ActualizarRequest) returns (ProductoDto);
+  rpc Eliminar (IdRequest) returns (Empty);
+}
